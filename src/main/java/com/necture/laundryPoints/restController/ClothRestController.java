@@ -34,9 +34,15 @@ public class ClothRestController {
 	@GetMapping(value = "{id}")
 	public ResponseEntity<Cloth> getSingleCloth(@PathVariable UUID id) {
 		Cloth clothData = clothService.findById(id);
-		return new ResponseEntity<>(clothData, HttpStatus.OK);
+		return ResponseEntity.ok(clothData);
 	}
 
+	/* *
+	 * getting all cloth details
+	 * this can be no useful when user want to access it
+	 * block this so user can't access it 
+	 * This is only for admin
+	 * */
 	@GetMapping(value = "")
 	public ResponseEntity<List<Cloth>> getAllCloth() {
 		List<Cloth> clothData = clothService.findAll();
@@ -48,23 +54,23 @@ public class ClothRestController {
 	 */
 	@PostMapping(value = { "/save", "Save" })
 	public ResponseEntity<Cloth> save(@Valid @RequestBody Cloth clothData) {
-		System.out.println(clothData);
 		Cloth cloth = clothService.save(clothData);
-		return new ResponseEntity<>(cloth, HttpStatus.OK);
+		return ResponseEntity.ok(cloth);
 	}
 
 	@PutMapping(value = { "update", "update" })
 	public ResponseEntity<Cloth> update(@Valid @RequestBody Cloth clothData) {
 		Cloth cloth = clothService.save(clothData);
-		return new ResponseEntity<>(cloth, HttpStatus.OK);
+		return ResponseEntity.ok(cloth);
 	}
 
 	/*
 	 * deleting existing cloth by using cloth id
+	 * This has been not deleted.
+	 * This is just for demo purpose
 	 */
 	@DeleteMapping(value = "{id}")
 	public void delete(@PathVariable UUID id) {
-		System.out.println("you are visited");
 		clothService.deleteById(id);
 	}
 

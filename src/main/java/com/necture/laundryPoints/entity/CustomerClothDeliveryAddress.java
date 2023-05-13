@@ -3,6 +3,7 @@ package com.necture.laundryPoints.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,7 @@ public class CustomerClothDeliveryAddress {
 
 	private String city;
 
+	@Column(name = "country_state")
 	private String state;
 
 	private String country;

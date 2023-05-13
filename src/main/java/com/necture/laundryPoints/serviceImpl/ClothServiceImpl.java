@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.necture.laundryPoints.dto.ClothDto;
 import com.necture.laundryPoints.entity.Cloth;
 import com.necture.laundryPoints.repository.ClothRepository;
 import com.necture.laundryPoints.service.ClothService;
@@ -51,6 +52,9 @@ public class ClothServiceImpl implements ClothService {
 		return null;
 	}
 
+	/**
+	 * not used
+	 */
 	@Override
 	public void delete(Cloth object) {
 
@@ -59,6 +63,26 @@ public class ClothServiceImpl implements ClothService {
 	@Override
 	public void deleteById(UUID id) {
 		clothRepo.deleteById(id);
+	}
+
+	/**
+	 * just for demo purpose
+	 */
+	@Override
+	public ClothDto save(ClothDto clothData) {
+		Cloth cloth = new Cloth();
+		
+		cloth.setClothName(clothData.getClothName());
+		cloth.setPrice(clothData.getPrice());
+		
+		cloth = save(cloth);
+		System.out.println(cloth);
+		System.out.println();
+		if(!Objects.isNull(cloth)) {
+			clothData.setId(cloth.getId());
+			return clothData;
+		}
+		return new ClothDto();
 	}
 
 }

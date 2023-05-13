@@ -6,7 +6,12 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
+/**
+ * 
+ * @author Pankaj Chauhan
+ * @date 25th Match 2023
+ * @version 1.0
+ */
 @ControllerAdvice
 public class CustomIllegalArgumentExceptionController {
 

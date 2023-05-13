@@ -16,6 +16,6 @@ public class CustomSqlException {
 	@ResponseBody
 	public ResponseEntity<String> handleNumberFormatExceptions(Exception exc) {
 		exc.printStackTrace();
-		return new ResponseEntity<String>("Please enter valid value", HttpStatus.OK);
+		return ResponseEntity.ok("Please enter valid value");
 	}
 }

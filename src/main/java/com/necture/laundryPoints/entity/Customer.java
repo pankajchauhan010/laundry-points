@@ -1,6 +1,7 @@
 package com.necture.laundryPoints.entity;
 
-import java.time.LocalDateTime;
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -12,19 +13,33 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Builder.Default;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class Customer {
+@Table(name = "customer")
+public class Customer implements Serializable {
+
+	private static final long serialVersionUID = 4964124355044378331L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 
 	private String firstName;
 
 	private String lastName;
 
-	private LocalDateTime dateOfBirth;
+	private LocalDate dateOfBirth;
 
 	// primary email
 	private String primaryEmail;
@@ -36,73 +51,12 @@ public class Customer {
 	private String password;
 
 	// one to many relation
+	@Default
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	private List<CustomerAddress> custAddress = new ArrayList<>();
-	
+
+	@Default
 	@OneToMany(mappedBy = "customer")
 	private List<OrderCreationDetail> orderCreationDetails = new ArrayList<>();
-
-	public UUID getId() {
-		return id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public LocalDateTime getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(LocalDateTime dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
-	public String getPrimaryEmail() {
-		return primaryEmail;
-	}
-
-	public void setPrimaryEmail(String primaryEmail) {
-		this.primaryEmail = primaryEmail;
-	}
-
-	public String getMobileNumber() {
-		return mobileNumber;
-	}
-
-	public void setMobileNumber(String mobileNumber) {
-		this.mobileNumber = mobileNumber;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public List<CustomerAddress> getCustAddress() {
-		return custAddress;
-	}
-
-	public void setCustAddress(List<CustomerAddress> custAddress) {
-		this.custAddress = custAddress;
-	}
-
-	@Override
-	public String toString() {
-		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth="
-				+ dateOfBirth + ", primaryEmail=" + primaryEmail + ", mobileNumber=" + mobileNumber + ", password="
-				+ password + "]";
-	}
 
 }

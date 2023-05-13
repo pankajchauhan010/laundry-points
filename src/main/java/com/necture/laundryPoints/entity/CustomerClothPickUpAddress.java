@@ -2,7 +2,9 @@ package com.necture.laundryPoints.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +16,7 @@ public class CustomerClothPickUpAddress {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
+	private UUID id;
 
 	private String addressLineOne;
 	
@@ -22,6 +24,7 @@ public class CustomerClothPickUpAddress {
 	
 	private String city;
 	
+	@Column(name = "country_state")
 	private String State;
 	
 	private String Country;

@@ -1,40 +1,55 @@
 package com.necture.laundryPoints.serviceImpl;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.necture.laundryPoints.dto.CustomerDto;
 import com.necture.laundryPoints.entity.Customer;
 import com.necture.laundryPoints.repository.CustomerRepository;
 import com.necture.laundryPoints.service.CustomerService;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
-	
+
 	@Autowired
 	CustomerRepository custRepo;
 
 	@Override
 	public List<Customer> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return custRepo.findAll();
 	}
 
 	@Override
 	public Customer findById(UUID id) {
 		Optional<Customer> customerData = custRepo.findById(id);
-		if(customerData.isPresent()) {
+		if (customerData.isPresent()) {
 			return customerData.get();
 		}
 		return new Customer();
 	}
 
 	@Override
-	public Customer save(Customer object) {
-		// TODO Auto-generated method stub
+	public CustomerDto saveCustomer(CustomerDto data) {
+		
+		Customer customerData = custRepo.save(getCustomerData(data));
+		
+		if (Objects.nonNull(customerData)) {
+			data.setId(customerData.getId());
+			return data;
+		}
+
+		return new CustomerDto();
+	}
+
+	
+
+	@Override
+	public Customer save(Customer data) {
 		return null;
 	}
 
@@ -48,6 +63,38 @@ public class CustomerServiceImpl implements CustomerService {
 	public void deleteById(UUID id) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public CustomerDto findByPrimaryEmail(String email) {
+		Optional<Customer> customerData = custRepo.findByPrimaryEmail(email);
+		
+		if (customerData.isPresent()) {
+			return getCustomerDtoData(customerData.get());
+		}
+		return null;
+	}
+	
+	private Customer getCustomerData(CustomerDto data) {
+		return Customer.builder()
+				.firstName(data.getFirstName())
+				.lastName(data.getLastName())
+				.primaryEmail(data.getPrimaryEmail())
+				.dateOfBirth(data.getDateOfBirth())
+				.mobileNumber(data.getMobileNumber())
+				.password(data.getPassword())
+				.build();
+	}
+
+	private CustomerDto getCustomerDtoData(Customer data) {
+		CustomerDto customerDto =  new CustomerDto();
+		customerDto.setFirstName(data.getFirstName());
+		customerDto.setLastName(data.getFirstName());
+		customerDto.setPrimaryEmail(data.getPrimaryEmail());
+		customerDto.setDateOfBirth(data.getDateOfBirth());
+		customerDto.setMobileNumber(data.getMobileNumber());
+		
+		return customerDto;
 	}
 
 }

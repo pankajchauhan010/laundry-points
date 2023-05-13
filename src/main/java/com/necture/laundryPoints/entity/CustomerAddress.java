@@ -1,21 +1,27 @@
 package com.necture.laundryPoints.entity;
 
+import java.io.Serializable;
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class CustomerAddress {
+@Table(name = "customerAddress")
+public class CustomerAddress implements Serializable {
+
+	private static final long serialVersionUID = -4396252858066220997L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 
 	// use with address
@@ -27,7 +33,8 @@ public class CustomerAddress {
 
 	private String city;
 
-	private String State;
+	@Column(name = "country_state")
+	private String state;
 
 	private String country;
 
@@ -72,11 +79,11 @@ public class CustomerAddress {
 	}
 
 	public String getState() {
-		return State;
+		return state;
 	}
 
 	public void setState(String state) {
-		State = state;
+		this.state = state;
 	}
 
 	public String getCountry() {
@@ -110,7 +117,7 @@ public class CustomerAddress {
 	@Override
 	public String toString() {
 		return "CustomerAddress [id=" + id + ", mobileNumber=" + mobileNumber + ", addressLineOne=" + addressLineOne
-				+ ", addressLineTwo=" + addressLineTwo + ", city=" + city + ", State=" + State + ", country=" + country
+				+ ", addressLineTwo=" + addressLineTwo + ", city=" + city + ", state=" + state + ", country=" + country
 				+ ", zipCode=" + zipCode + "]";
 	}
 

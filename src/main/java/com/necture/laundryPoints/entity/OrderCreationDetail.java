@@ -39,11 +39,13 @@ public class OrderCreationDetail {
 	@JsonIgnore
 	private Cloth cloth;
 
+	// this is just for reference not use while saving the order
 	@ManyToOne
 	@JoinColumn(name = "cust_pick_up_addr")
 	@JsonIgnore
 	private CustomerClothPickUpAddress custPickUpAddress;
 
+	// this is just for reference not use while saving the order
 	@ManyToOne
 	@JoinColumn(name = "cust_delivery_addr")
 	@JsonIgnore

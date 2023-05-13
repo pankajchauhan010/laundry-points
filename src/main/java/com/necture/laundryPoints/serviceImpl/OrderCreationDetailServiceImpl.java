@@ -6,11 +6,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.necture.laundryPoints.entity.OrderCreationDetail;
 import com.necture.laundryPoints.repository.OrderCreationDetailRepository;
 import com.necture.laundryPoints.service.OrderCreationDetailService;
 
+@Service
 public class OrderCreationDetailServiceImpl implements OrderCreationDetailService {
 
 	@Autowired
