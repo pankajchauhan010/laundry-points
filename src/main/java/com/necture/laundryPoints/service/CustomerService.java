@@ -11,4 +11,5 @@ public interface CustomerService extends CrudService<Customer, UUID> {
 	
 	CustomerDto findByPrimaryEmail(String email);
 
+	void deleteByEmail(String email);
 }

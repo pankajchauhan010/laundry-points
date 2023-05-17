@@ -10,6 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author pankaj
+ * @version 0.1
+ * @date 14th May 2023
+ *
+ */
 // this has been used by admin but currently we aren't using any functionality of 
 // admin so we can used it directly
 @Entity

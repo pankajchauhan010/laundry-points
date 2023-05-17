@@ -13,6 +13,14 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * 
+ * @author pankaj
+ * @version 0.1
+ * @date 14th May 2023
+ *
+ */
+
 @Entity
 @Table(name = "order_creation_detail")
 public class OrderCreationDetail {
@@ -30,7 +38,7 @@ public class OrderCreationDetail {
 	private Boolean status;
 
 	@ManyToOne
-	@JoinColumn(name = "cust_id")
+	@JoinColumn(name = "customer_id")
 	@JsonIgnore
 	private Customer customer;
 
@@ -41,13 +49,13 @@ public class OrderCreationDetail {
 
 	// this is just for reference not use while saving the order
 	@ManyToOne
-	@JoinColumn(name = "cust_pick_up_addr")
+	@JoinColumn(name = "cust_pick_up_addr_id")
 	@JsonIgnore
 	private CustomerClothPickUpAddress custPickUpAddress;
 
 	// this is just for reference not use while saving the order
 	@ManyToOne
-	@JoinColumn(name = "cust_delivery_addr")
+	@JoinColumn(name = "cust_delivery_addr_id")
 	@JsonIgnore
 	private CustomerClothDeliveryAddress custDeliveryAddress;
 

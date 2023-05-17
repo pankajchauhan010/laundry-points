@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 /**
  * 
  * @author Pankaj Chauhan
+ * @version 0.1
  * @since 7th May 2023
  *
  */
@@ -30,8 +31,8 @@ public class OrderCreationDetailDto {
 	private LocalDateTime deliveryDate;
 
 	// used to refer the customer
-	@NotBlank(message = "user name is mandtory to create order")
-	private String userName;
+	@NotBlank(message = "email is mandtory to create order")
+	private String primaryEmail;
 	
 	
 	// use to refer the customer address that is providing during creation of account

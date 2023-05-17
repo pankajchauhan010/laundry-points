@@ -21,6 +21,14 @@ import lombok.Builder.Default;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 
+ * @author pankaj
+ * @version 0.1
+ * @date 14th May 2023
+ *
+ */
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -58,5 +66,13 @@ public class Customer implements Serializable {
 	@Default
 	@OneToMany(mappedBy = "customer")
 	private List<OrderCreationDetail> orderCreationDetails = new ArrayList<>();
+	
+//	@Default
+//	@OneToMany(mappedBy = "customer")
+//	private List<CustomerClothDeliveryAddress> customerClothDeliveryAddresses = new ArrayList<>();
+	
+//	@Default
+//	@OneToMany(mappedBy = "customer")
+//	private List<CustomerClothPickUpAddress> customerClothPickUpAddresses = new ArrayList<>();
 
 }

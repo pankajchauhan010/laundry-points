@@ -40,6 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		if (Objects.nonNull(customerData)) {
 			data.setId(customerData.getId());
+//			data.setPassword("");
 			return data;
 		}
 
@@ -53,12 +54,16 @@ public class CustomerServiceImpl implements CustomerService {
 		return null;
 	}
 
+	/**
+	 * User can delete their account
+	 */
 	@Override
 	public void delete(Customer object) {
 		// TODO Auto-generated method stub
 
 	}
 
+	
 	@Override
 	public void deleteById(UUID id) {
 		// TODO Auto-generated method stub
@@ -77,6 +82,7 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	private Customer getCustomerData(CustomerDto data) {
 		return Customer.builder()
+				.id(data.getId())
 				.firstName(data.getFirstName())
 				.lastName(data.getLastName())
 				.primaryEmail(data.getPrimaryEmail())
@@ -88,13 +94,24 @@ public class CustomerServiceImpl implements CustomerService {
 
 	private CustomerDto getCustomerDtoData(Customer data) {
 		CustomerDto customerDto =  new CustomerDto();
+		customerDto.setId(data.getId());
 		customerDto.setFirstName(data.getFirstName());
 		customerDto.setLastName(data.getFirstName());
 		customerDto.setPrimaryEmail(data.getPrimaryEmail());
 		customerDto.setDateOfBirth(data.getDateOfBirth());
 		customerDto.setMobileNumber(data.getMobileNumber());
+//		customerDto.setPassword("");
 		
 		return customerDto;
+	}
+
+	/**
+	 * we can delete by email id just for demo purpose
+	 */
+	@Override
+	public void deleteByEmail(String email) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

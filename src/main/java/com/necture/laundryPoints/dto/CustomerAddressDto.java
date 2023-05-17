@@ -1,5 +1,7 @@
 package com.necture.laundryPoints.dto;
 
+import java.util.UUID;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -11,6 +13,7 @@ import lombok.NoArgsConstructor;
 /**
  * 
  * @author Pankaj Chauhan
+ * @version 0.1
  * @since 7th May 2023
  *
  */
@@ -20,6 +23,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class CustomerAddressDto {
+	
+	private UUID id;
 
 	private String mobileNumber;
 
@@ -38,7 +43,10 @@ public class CustomerAddressDto {
 	private String zipCode;
 
 	// this mandatory to save the user address
-	@NotNull(message = "user name is mandatory")
-	private String userName;
+//	@NotNull(message = "user name is mandatory")
+//	private String primaryEmail;
+
+	@NotNull(message = "Customer id is mandatory")
+	private UUID custId;
 
 }

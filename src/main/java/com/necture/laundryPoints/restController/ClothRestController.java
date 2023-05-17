@@ -21,6 +21,14 @@ import com.necture.laundryPoints.constant.RestApiUrlConstant;
 import com.necture.laundryPoints.entity.Cloth;
 import com.necture.laundryPoints.service.ClothService;
 
+/**
+ * 
+ * @author pankaj
+ * @version 0.1
+ * @date 14th May 2023
+ *
+ */
+
 @RestController
 @RequestMapping(path = RestApiUrlConstant.API_ROOT_PATH + "/cloth")
 public class ClothRestController {
@@ -66,7 +74,6 @@ public class ClothRestController {
 
 	/*
 	 * deleting existing cloth by using cloth id
-	 * This has been not deleted.
 	 * This is just for demo purpose
 	 */
 	@DeleteMapping(value = "{id}")
